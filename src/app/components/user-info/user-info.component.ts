@@ -22,7 +22,7 @@ export class UserInfoComponent implements OnInit {
   private subscription: Subscription;
 
   ngOnInit() {
-    this.subscription = this.userEvents.userEditFormStateObservableSubject.subscribe((value: EditState) => {
+    this.subscription = this.userEvents.userEditUserItemStateObservableSubject.subscribe((value: EditState) => {
       this.editState = value;
     });
   }

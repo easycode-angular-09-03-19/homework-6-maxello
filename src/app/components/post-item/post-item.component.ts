@@ -12,5 +12,4 @@ export class PostItemComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

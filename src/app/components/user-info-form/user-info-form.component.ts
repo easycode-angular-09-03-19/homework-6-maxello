@@ -43,13 +43,13 @@ export class UserInfoFormComponent implements OnInit {
       this.user = data;
       this.subscription = this.userEvents.userEditUserItemStateObservableSubject.subscribe((value: EditState) => {
         this.formEditState = value;
-        if(this.formEditState.isEdit){
+        if (this.formEditState.isEdit) {
           this.userFieldsCopy.name = this.user.name;
           this.userFieldsCopy.email = this.user.email;
           this.userFieldsCopy.username = this.user.username;
           this.userFieldsCopy.phone = this.user.phone;
           this.userFieldsCopy.website = this.user.website;
-        } else if(this.userFieldsCopy.name && this.userFieldsCopy.email){
+        } else if (this.userFieldsCopy.name && this.userFieldsCopy.email) {
           this.user.name = this.userFieldsCopy.name;
           this.user.email = this.userFieldsCopy.email;
           this.user.username = this.userFieldsCopy.username;
@@ -70,10 +70,10 @@ export class UserInfoFormComponent implements OnInit {
   }
 
   onSubmit(form: any) {
-    if(form.valid) {
+    if (form.valid) {
       this.userService.editUser(this.user).subscribe((data) => {
       this.formEditState.isEdit = false;
-      this.userEvents.emitEditFormState(this.formEditState);
+      this.userEvents.emitEditUserState(this.formEditState);
       this.messageEvents.emitMessage({
         severity: 'success', 
         summary: 'Information was changed successfuly.'

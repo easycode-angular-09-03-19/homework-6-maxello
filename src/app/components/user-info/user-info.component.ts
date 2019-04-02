@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserEventsService } from "../../services/user-events.service";
 import { EditState } from "../../interfaces/User";
 import { Subscription } from 'rxjs';
+import { Location } from "@angular/common";
 
 @Component({
   selector: 'app-user-info',
@@ -10,7 +11,8 @@ import { Subscription } from 'rxjs';
 })
 export class UserInfoComponent implements OnInit {
   constructor(
-    private userEvents: UserEventsService
+    private userEvents: UserEventsService,
+    private location: Location
   ) { }
 
   editState: EditState = {
@@ -21,9 +23,12 @@ export class UserInfoComponent implements OnInit {
 
   ngOnInit() {
     this.subscription = this.userEvents.userEditFormStateObservableSubject.subscribe((value: EditState) => {
-      console.log("from form", value)
       this.editState = value;
     });
+  }
+
+  onGoBack() {
+    this.location.back();
   }
 
   ngOnDestroy() {

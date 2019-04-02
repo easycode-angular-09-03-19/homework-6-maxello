@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { User } from "../../interfaces/User"
 
@@ -13,8 +13,7 @@ export class UserListItemComponent implements OnInit {
     private router: Router
   ) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   onInfoClick() {
     this.router.navigate([`/user`, this.user.id]);

@@ -13,6 +13,14 @@ export interface EditState {
 	isEdit: boolean;
 }
 
+export interface UserFormFields {
+	name: string;
+	username: string;
+	phone: string;
+	email: string;
+	website: string;
+}
+
 interface Address {
 	street: string;
 	suite: string;

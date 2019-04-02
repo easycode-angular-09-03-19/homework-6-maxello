@@ -1,0 +1,9 @@
+<div class="card mb-3">
+  <div class="card-header">
+    <a href="#" [routerLink]="['/user', post?.userId]">#{{ post.userId }}</a>: {{ post.title }}
+  </div>
+  <div class="card-body">
+    <!-- <h5 class="card-title">{{ post.body }}</h5> -->
+    <p class="card-text">{{ post.body }}</p>
+  </div>
+</div>

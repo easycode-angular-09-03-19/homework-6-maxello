@@ -1,18 +1,35 @@
 <form (ngSubmit)="onSubmit(editUserForm)" class="user-form" #editUserForm="ngForm" novalidate>
+  <!-- Name -->
   <div class="form-group">
-    <label for="user-name">User Name</label>
-    <input type="text" class="form-control" id="user-name" [ngModel]="user?.name" (ngModelChange)="user.name = $event" name="name" [readOnly]="!formEditState.isEdit" #userName="ngModel" placeholder="User Name" minlength="3" required>
+    <label for="name">Name</label>
+    <input type="text" class="form-control" id="name" [ngModel]="user?.name" (ngModelChange)="user.name = $event" name="name" [readOnly]="!formEditState.isEdit" #name="ngModel" placeholder="Name" minlength="3" required>
   </div>
   <div class="input-group">
-    <div *ngIf="userName.invalid && (userName.dirty || userName.touched) && editUserForm.submitted" class="error-message">
-      <div *ngIf="userName.errors.required">
+    <div *ngIf="name.invalid && (name.dirty || name.touched) && editUserForm.submitted" class="error-message">
+      <div *ngIf="name.errors.required">
         Name is required.
       </div>
-      <div *ngIf="userName.errors.minlength">
+      <div *ngIf="name.errors.minlength">
         Name must be at least 3 characters long.
       </div>
     </div>
   </div>
+  <!-- User Name -->
+  <div class="form-group">
+    <label for="user-name">User Name</label>
+    <input type="text" class="form-control" id="user-name" [ngModel]="user?.username" (ngModelChange)="user.username = $event" name="username" [readOnly]="!formEditState.isEdit" #userName="ngModel" placeholder="User Name" minlength="3" required>
+  </div>
+  <div class="input-group">
+    <div *ngIf="userName.invalid && (userName.dirty || userName.touched) && editUserForm.submitted" class="error-message">
+      <div *ngIf="userName.errors.required">
+        User name is required.
+      </div>
+      <div *ngIf="userName.errors.minlength">
+        User name must be at least 3 characters long.
+      </div>
+    </div>
+  </div>
+  <!-- User Email-->
   <div class="form-group">
     <label for="user-email">User Email</label>
     <input type="email" name="email" class="form-control" id="user-email" [ngModel]="user?.email" (ngModelChange)="user.email = $event" [readOnly]="!formEditState.isEdit" required email #userEmail="ngModel" placeholder="User Email">
@@ -25,5 +42,26 @@
       Email is invalid.
     </div>
   </div>
+  <!-- User Phone -->
+  <div class="form-group">
+    <label for="user-phone">User Phone</label>
+    <input type="text" name="phone" class="form-control" id="user-phone" [ngModel]="user?.phone" (ngModelChange)="user.phone = $event" [readOnly]="!formEditState.isEdit" required #userPhone="ngModel" placeholder="User Phone">
+  </div>
+  <div *ngIf="userPhone.invalid && (userPhone.dirty || userPhone.touched) && editUserForm.submitted" class="error-message">
+    <div *ngIf="userPhone.errors.required">
+      Phone is required.
+    </div>
+  </div>
+  <!-- Website -->
+  <div class="form-group">
+    <label for="user-website">Website</label>
+    <input type="text" name="website" class="form-control" id="user-website" [ngModel]="user?.website" (ngModelChange)="user.website = $event" [readOnly]="!formEditState.isEdit" required #userWebsite="ngModel" placeholder="Website">
+  </div>
+  <div *ngIf="userWebsite.invalid && (userWebsite.dirty || userWebsite.touched) && editUserForm.submitted" class="error-message">
+    <div *ngIf="userWebsite.errors.required">
+      Website is required.
+    </div>
+  </div>
   <button *ngIf="formEditState.isEdit" type="submit" class="btn btn-success">Submit</button>
 </form>
+

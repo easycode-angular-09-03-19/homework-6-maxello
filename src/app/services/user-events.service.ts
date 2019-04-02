@@ -16,12 +16,10 @@ export class UserEventsService {
   constructor() { }
 
   emitEditUserState(value: EditState) {
-    console.log("next1");
     this.userEditUserItemStateSource.next(value);
   }
 
   emitEditFormState(value: EditState) {
-    console.log("next2");
     this.userEditFormStateSource.next(value);
   }
 }

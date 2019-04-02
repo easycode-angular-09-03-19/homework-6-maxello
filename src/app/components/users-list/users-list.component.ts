@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from "../../services/users.service";
-import { User } from "../../interfaces/User"
+import { User } from "../../interfaces/User";
+import { MessageEventsService } from '../../services/message-events.service';
 
 @Component({
   selector: 'app-users-list',
@@ -11,15 +12,18 @@ export class UsersListComponent implements OnInit {
   users: User[];
 
   constructor(
-    public usersService: UsersService
+    private usersService: UsersService,
+    private messageEvents: MessageEventsService
   ) { }
 
   ngOnInit() {
     this.usersService.getUsers().subscribe((data: User[]) => {
       this.users = data;
-      console.log(data);
-    }, (err) => {
-      console.log(err);
+    }, () => {
+      this.messageEvents.emitMessage({
+        severity: 'error', 
+        summary: 'Something wrong!'
+      });
     });
   }
 

@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-sm-4">
       <div class="mb-3">
-        <button class="btn btn-light" routerLink="/">&#8592; Back</button>
+        <button class="btn btn-light" (click)="onGoBack()">&#8592; Back</button>
       </div>
       <div class="mb-3">
         <div *ngIf="editState.isEdit; then thenBlock else elseBlock"></div>

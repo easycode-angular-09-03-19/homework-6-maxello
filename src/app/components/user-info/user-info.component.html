@@ -1,0 +1,20 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="mb-3">
+        <button class="btn btn-light" (click)="onGoBack()">&#8592; Back</button>
+      </div>
+      <div class="mb-3">
+        <div *ngIf="editState.isEdit; then thenBlock else elseBlock"></div>
+        <ng-template #thenBlock>
+          <button class="btn btn-warning" (click)="onEdit()">Cancel</button>
+        </ng-template>
+        <ng-template #elseBlock>
+          <button class="btn btn-info" (click)="onEdit()">Edit</button>
+        </ng-template>
+      </div>
+      <app-user-info-form></app-user-info-form>
+    </div>
+  </div>
+</div>  
+

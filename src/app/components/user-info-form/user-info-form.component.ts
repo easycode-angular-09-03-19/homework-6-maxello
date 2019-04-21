@@ -71,7 +71,7 @@ export class UserInfoFormComponent implements OnInit {
 
   onSubmit(form: any) {
     if (form.valid) {
-      this.userService.editUser(this.user).subscribe((data) => {
+      this.userService.editUser(this.user.id).subscribe((data: any) => {
       this.formEditState.isEdit = false;
       this.userEvents.emitEditUserState(this.formEditState);
       this.messageEvents.emitMessage({
